@@ -1,0 +1,11 @@
+{
+  "name": "calculadora-suspension",
+  "version": "1.0.0",
+  "description": "Calculadora de tiempo de trabajo para suspensión de vehículos",
+  "main": "index.html",
+  "scripts": {
+    "start": "echo 'Open index.html in browser'"
+  },
+  "author": "Tu nombre",
+  "license": "MIT"
+}
