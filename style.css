@@ -1,0 +1,348 @@
+
+/* ===============================
+   Moscato Neumáticos – Goodyear look
+   Palette based on deep blue + yellow accents
+   =============================== */
+
+:root{
+  --blue-900:#0e2a66;   /* deep brand blue */
+  --blue-700:#0046ad;   /* action blue */
+  --blue-500:#1e63d6;
+  --yellow-500:#ffd200; /* Goodyear yellow */
+  --surface:#ffffff;
+  --surface-alt:#f6f8fb;
+  --text-900:#1d2633;
+  --text-700:#3b4758;
+  --ok:#28a745;
+  --warn:#ffc107;
+  --danger:#dc3545;
+  --shadow:0 20px 60px rgba(14,42,102,.22);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family: 'Poppins','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: radial-gradient(1200px 800px at 10% -10%, rgba(0,70,173,.15), transparent 60%),
+              linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+  min-height:100vh;
+  padding:20px;
+  color:var(--text-900);
+}
+
+/* Card / container */
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  background:var(--surface);
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  border:1px solid rgba(14,42,102,.08);
+}
+
+/* Header as hero-like banner */
+header{
+  position:relative;
+  background:
+     linear-gradient(135deg, rgba(14,42,102,.92) 0%, rgba(0,70,173,.92) 100%);
+  color:#fff;
+  padding:48px 20px;
+  text-align:center;
+}
+
+header::after{
+  /* thin yellow underline accent */
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+  width:140px;
+  height:4px;
+  background:var(--yellow-500);
+  border-radius:4px 4px 0 0;
+}
+
+header h1{
+  font-size:2.6em;
+  margin-bottom:10px;
+  font-weight:800;
+  letter-spacing:.3px;
+  text-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+
+header p{
+  font-size:1.06em;
+  opacity:.95;
+}
+
+main{padding:40px 22px}
+
+/* Sections */
+.section{
+  background:var(--surface-alt);
+  border-left:6px solid var(--yellow-500);
+  padding:26px;
+  margin-bottom:28px;
+  border-radius:12px;
+  transition:box-shadow .25s ease, transform .25s ease;
+}
+
+.section:hover{
+  box-shadow:0 10px 28px rgba(14,42,102,.08);
+  transform:translateY(-2px);
+}
+
+.section h2{
+  color:var(--text-900);
+  margin-bottom:16px;
+  font-size:1.45em;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.form-group{margin-bottom:18px}
+
+label{
+  display:block;
+  margin-bottom:8px;
+  color:var(--text-700);
+  font-weight:600;
+  font-size:.95em;
+}
+
+input, select{
+  width:100%;
+  padding:12px 14px;
+  border:2px solid #e5e9f2;
+  border-radius:10px;
+  font-size:1em;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  font-family:inherit;
+  background:#fff;
+}
+
+input:focus, select:focus{
+  outline:none;
+  border-color:var(--blue-700);
+  box-shadow:0 0 0 3px rgba(0,70,173,.14);
+}
+
+/* Selector de piezas + CTA */
+.pieza-selector{
+  display:flex; gap:12px; align-items:flex-end;
+}
+.pieza-selector select{flex:1}
+
+/* Primary action = Goodyear yellow, with blue hover */
+.btn-agregar{
+  padding:12px 22px;
+  background:var(--yellow-500);
+  color:#0b204b;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.4px;
+  transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  white-space:nowrap;
+  box-shadow:0 6px 18px rgba(255,210,0,.35);
+}
+.btn-agregar:hover{
+  background:#ffdf4d;
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(255,210,0,.45);
+}
+
+/* Grid de tarjetas */
+.piezas-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  gap:20px;
+}
+
+/* Cards */
+.pieza-card{
+  background:#fff;
+  border:1.5px solid rgba(14,42,102,.12);
+  border-radius:12px;
+  padding:20px;
+  transition:transform .2s ease, box-shadow .2s ease;
+  position:relative;
+  animation:slideIn .28s ease;
+}
+.pieza-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(14,42,102,.12);
+}
+
+.pieza-card-header{
+  display:flex; justify-content:space-between; align-items:start; margin-bottom:14px;
+}
+
+.pieza-nombre{
+  font-size:1.15em; font-weight:800; color:var(--text-900);
+}
+
+/* Danger small button */
+.btn-eliminar{
+  background:var(--danger);
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:filter .2s ease;
+  font-size:.86em;
+}
+.btn-eliminar:hover{ filter:brightness(.92) }
+
+.form-group-card{ margin-bottom:14px }
+.form-group-card label{ margin-bottom:6px; font-size:.9em }
+
+/* Cantidad stepper */
+.cantidad-control{ display:flex; align-items:center; gap:10px }
+.btn-menos,.btn-mas{
+  width:42px; height:42px;
+  border:2px solid var(--blue-700);
+  background:#fff;
+  color:var(--blue-700);
+  border-radius:8px;
+  cursor:pointer;
+  font-size:1.2em; font-weight:800;
+  transition:background .2s ease, color .2s ease;
+}
+.btn-menos:hover,.btn-mas:hover{
+  background:var(--blue-700);
+  color:#fff;
+}
+.cantidad-display{
+  flex:1; text-align:center; font-size:1.15em; font-weight:800; color:var(--text-900);
+  background:#f0f3f9; padding:9px; border-radius:8px;
+}
+
+/* Botones lado (izq/der) */
+.lado-selector{ display:flex; gap:10px }
+.lado-btn{
+  flex:1; padding:10px;
+  border:2px solid #dbe3f3;
+  background:#fff;
+  border-radius:8px;
+  cursor:pointer;
+  transition:border-color .2s ease, background .2s ease, color .2s ease;
+  font-weight:700; color:#5b6b84;
+}
+.lado-btn.active{
+  background:var(--blue-700);
+  color:#fff;
+  border-color:var(--blue-700);
+}
+
+/* Tiempo de pieza */
+.pieza-tiempo{
+  background:linear-gradient(135deg, rgba(0,70,173,.12), rgba(14,42,102,.12));
+  padding:10px; border-radius:8px; text-align:center; font-weight:700; color:var(--blue-700);
+}
+
+/* Admin box */
+.admin-piezas{
+  background:#fff; padding:20px; border-radius:12px;
+  border:2px dashed rgba(14,42,102,.25);
+}
+.admin-piezas h3{ color:var(--blue-700); margin-bottom:12px; font-size:1.12em }
+
+/* Primary save button (blue) */
+.btn-guardar{
+  width:100%; padding:12px;
+  background:var(--blue-700);
+  color:#fff;
+  border:none; border-radius:10px; cursor:pointer;
+  font-weight:800; font-size:1em;
+  transition:transform .15s ease, box-shadow .2s ease;
+  box-shadow:0 8px 20px rgba(0,70,173,.25);
+}
+.btn-guardar:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(0,70,173,.35);
+}
+
+/* System messages */
+.mensaje{
+  margin-top:14px; padding:14px; border-radius:10px; text-align:center; font-weight:700; display:none;
+}
+.mensaje.exito{ background:#e6f6ea; color:#0f6b2e; border:1px solid #bfe7ca; display:block }
+.mensaje.error{ background:#fde7ea; color:#8a1a26; border:1px solid #f6c7cf; display:block }
+
+/* Result panel */
+.resultado{
+  background:linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+  color:#fff;
+  border-left:6px solid var(--yellow-500);
+}
+.resultado h2{ color:#fff }
+
+/* Calculation grid */
+.calculo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px; margin-bottom:26px;
+}
+.calc-item{
+  background:rgba(255,255,255,.08);
+  padding:20px; border-radius:12px;
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.22);
+}
+.calc-item .label{ display:block; font-size:.9em; opacity:.95; margin-bottom:10px }
+.calc-item .valor{ display:block; font-size:2.05em; font-weight:800 }
+.calc-item input{
+  width:100%; padding:10px;
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.35);
+  color:#fff; border-radius:8px; font-weight:800;
+}
+.calc-item input::placeholder{ color:rgba(255,255,255,.6) }
+.calc-item input:focus{ outline:none; background:rgba(255,255,255,.3) }
+
+/* Action buttons */
+.botones-accion{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:14px;
+}
+.btn-limpiar,.btn-reporte,.btn-pdf{
+  padding:12px 18px; border:none; border-radius:10px; cursor:pointer; font-weight:800; font-size:1em;
+  transition:transform .15s ease, filter .2s ease;
+}
+.btn-limpiar{ background:var(--danger); color:#fff }
+.btn-limpiar:hover{ transform:translateY(-2px); filter:brightness(.95) }
+.btn-reporte{ background:var(--yellow-500); color:#0b204b }
+.btn-reporte:hover{ transform:translateY(-2px); filter:brightness(1.05) }
+.btn-pdf{ background:#17a2b8; color:#fff }
+.btn-pdf:hover{ transform:translateY(-2px); filter:brightness(.95) }
+
+.empty-state{ text-align:center; color:#98a4b8; padding:40px; font-size:1.06em }
+
+footer{
+  background:#f4f6fb; text-align:center; padding:20px; color:#637189;
+  border-top:1px solid #e7ecf6;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  header h1{ font-size:1.9em }
+  main{ padding:22px 16px }
+  .section{ padding:16px }
+  .piezas-container{ grid-template-columns:1fr }
+  .pieza-selector{ flex-direction:column }
+  .pieza-selector select{ width:100% }
+  .btn-agregar{ width:100% }
+  .calculo-grid{ grid-template-columns:1fr }
+}
+
+/* Animations */
+@keyframes slideIn{
+  from{ opacity:0; transform:translateY(10px) }
+  to  { opacity:1; transform:translateY(0) }
+}
